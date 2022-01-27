@@ -2,7 +2,7 @@
 import Filehandling.Calculator
 import org.scalatest.funsuite.AnyFunSuite
 
-class CalculatorSuite extends AnyFunSuite {
+class CalculatorTest extends AnyFunSuite {
 
   val calculator = new Calculator
 
