@@ -3,13 +3,13 @@
 //import com.jetbrains.betterzheng.src.main.filehandling
 package Main
 
-import Filehandling.Filehandler
+import Filehandling.ZhengmaFilehandler
 
 import java.util.logging.FileHandler
 
 @main def helloWorld: Unit =
   println("Hello world!")
-  val filehandler = new Filehandler
+  val filehandler = new ZhengmaFilehandler
   val testvar: List[String] = filehandler.readfile("src/resources/openvingenzmjd.dict.yaml");
   println(testvar)
   println(msg)

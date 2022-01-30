@@ -1,6 +1,6 @@
 package Filehandling
 
-class Filehandler{
+class ZhengmaFilehandler{
 
   def readfile(filePath: String): List[String] = {
     //val source = scala.io.Source.fromFile("src/resources/openvingenzmjd.dict.yaml")
@@ -15,6 +15,16 @@ class Filehandler{
     val finaltext = scala.io.Source.fromFile(filePath).mkString
     val finallines = finaltext.split("\r\n").toList
 
+
     return finallines
   }
+
+  def textToCode: List[List[String]] = {
+    //    val testtext: List[String] = filehandler.readfile("src/resources/zmjdtest.dict.yaml")
+    val allLines: List[String] = readfile("src/resources/zmjdtest.dict.yaml");
+    val nested: List[List[String]] = allLines.map(l => l.split("\t").toList)
+    return nested
+  }
+
+
 }
