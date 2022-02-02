@@ -1,12 +1,13 @@
 
-import Filehandling.ZhengmaFilehandler
+import DataObjects.ZhengmaCharRaw
+import Filehandling.zhengmaFilehandler
 import org.scalatest.funsuite.AnyFunSuite
 
 class ZhengmaFileHandlerTest extends AnyFunSuite {
 
   //val text2: String = scala.io.Source.fromFile("src/resources/zmjdtest.dict.yaml").mkString
   //  val lines2: List[String] = text2.split("\r\n").toList
-  val filehandler = new ZhengmaFilehandler
+  val filehandler = new zhengmaFilehandler
 
 
   test("read zhengmafile and get correct length") {
@@ -53,9 +54,11 @@ class ZhengmaFileHandlerTest extends AnyFunSuite {
   }
 
 
-  test("add lines to each nested list") {
-    val testtext: List[String] = filehandler.readfile("src/resources/zmjdtest.dict.yaml")
-    val nestedList: List[List[String]] = filehandler.textToCode
+  test("turn all files into case objects") {
+    //val testtext: List[String] = filehandler.readfile("src/resources/zmjdtest.dict.yaml")
+    //val nestedList: List[List[String]] = filehandler.textToCode
+
+    val allFiles: List[ZhengmaCharRaw] = filehandler.getListOfUnsortedRawObj
 
     assert(true == false)
 
