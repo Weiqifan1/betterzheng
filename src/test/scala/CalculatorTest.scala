@@ -1,5 +1,5 @@
 
-import Filehandling.Calculator
+import FilehandlingRaw.Calculator
 import org.scalatest.funsuite.AnyFunSuite
 
 class CalculatorTest extends AnyFunSuite {

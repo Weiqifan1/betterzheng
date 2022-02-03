@@ -1,6 +1,6 @@
 
 import DataObjects.ZhengmaCharRaw
-import Filehandling.zhengmaFilehandler
+import FilehandlingRaw.zhengmaFilehandler
 import org.scalatest.funsuite.AnyFunSuite
 
 class ZhengmaFileHandlerTest extends AnyFunSuite {
@@ -64,6 +64,7 @@ class ZhengmaFileHandlerTest extends AnyFunSuite {
 
   }
 
+  
 
 
   def stringHasNoWhitespace(input: String): Boolean = {
@@ -71,7 +72,7 @@ class ZhengmaFileHandlerTest extends AnyFunSuite {
     val stringHasSameLength: Boolean = input.size == cleanString.size
     return stringHasSameLength
   }
-
+  
 
 
 }

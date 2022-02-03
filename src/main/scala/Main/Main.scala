@@ -3,15 +3,16 @@
 //import com.jetbrains.betterzheng.src.main.filehandling
 package Main
 
-import Filehandling.zhengmaFilehandler
-
+import FilehandlingRaw.zhengmaFilehandler
+import FilehandlingSingle.FilehandlingSingleBasic
 import java.util.logging.FileHandler
 
 @main def helloWorld: Unit =
   println("Hello world!")
-  val filehandler = new zhengmaFilehandler
-  val testvar: List[String] = filehandler.readfile("src/resources/dictionarySourceFiles/cedict_ts.u8");
-  println(testvar.length)
-  println(msg)
+  val filehandlerBasic = new FilehandlingSingleBasic
+  val tradLines = filehandlerBasic.readfile("src/resources/singleCharGenerated/trad13060.txt")
+  val simpLies = filehandlerBasic.readfile("src/resources/singleCharGenerated/simp9933.txt")
+  val test2 = ""
+
 
 def msg = "I was compiled by Scala 3. :)"

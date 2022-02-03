@@ -5,8 +5,10 @@ case class ZhengmaCharRaw(char:String,
                           existsInSimp:Boolean,
                           tzaiFreq:Int,
                           jundaFreq:Int,
-                          zhengmaAllCodes:List[CodeCollection],
+                          zhengmaAllCodesWithTypes:List[CodeCollection],
+                          zhengmaAllCodes:List[String],
                           zhengmaLongestCodes:List[String])
+
 enum OriginSet:
   case Gongmu, Openvingen, Windows7
   
