@@ -14,5 +14,4 @@ import java.util.logging.FileHandler
   val simpLies = filehandlerBasic.readfile("src/resources/singleCharGenerated/simp9933.txt")
   val test2 = ""
 
-
 def msg = "I was compiled by Scala 3. :)"
