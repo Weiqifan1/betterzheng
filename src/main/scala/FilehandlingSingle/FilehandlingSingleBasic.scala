@@ -12,6 +12,11 @@ class FilehandlingSingleBasic {
     return lines
   }
   
+  def getObjListWithLongestCode(code: String, withLongestCodes: List[ZhengmaPlain]): List[ZhengmaPlain] = {
+    val objContainsCodeAsLongest: List[ZhengmaPlain] = withLongestCodes.filter(e => e.LongCodes.contains(code))
+    return objContainsCodeAsLongest
+  }
+  
   def produceLongestCodes(zhengmaObjects: List[ZhengmaPlain]): List[ZhengmaPlain] = {
     val withLongestCodes: List[ZhengmaPlain] = zhengmaObjects.map(e => getObjWithLongestCode(e))
     return withLongestCodes

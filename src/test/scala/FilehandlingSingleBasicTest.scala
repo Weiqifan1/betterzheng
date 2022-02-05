@@ -4,6 +4,28 @@ import org.scalatest.funsuite.AnyFunSuite
 
 class FilehandlingSingleBasicTest extends AnyFunSuite {
 
+
+  test("compare longest codes and find dublicates"){
+    val filehandlerBasic = new FilehandlingSingleBasic
+    val tradLines: List[String] = filehandlerBasic.readfile("src/resources/singleCharGenerated/trad13060.txt")
+    val simpLies: List[String] = filehandlerBasic.readfile("src/resources/singleCharGenerated/simp9933.txt")
+    val objListTrad: List[ZhengmaPlain] = filehandlerBasic.buildZhengmaPlain("src/resources/singleCharGenerated/trad13060.txt")
+    val withLongestCodes: List[ZhengmaPlain] = filehandlerBasic.produceLongestCodes(objListTrad)
+
+    val listOfAllLongestCodes: List[String] = withLongestCodes.map(e=>e.LongCodes).flatten.distinct
+
+    val nestedListOfCodes: List[List[ZhengmaPlain]] = listOfAllLongestCodes.map(e=>
+      filehandlerBasic.getObjListWithLongestCode(e,withLongestCodes))
+
+    //from this list we can see that there are over 1000 clashes, many of them with common character clashing with each other.
+    val objWithClashingCodes: List[List[ZhengmaPlain]] = nestedListOfCodes.filter(e=>e.length>1)
+
+    assert(tradLines.length == 13060)
+    assert(simpLies.length == 9933)
+
+  }
+
+
   test("read the custom singleCharacter files") {
     val filehandlerBasic = new FilehandlingSingleBasic
     val tradLines: List[String] = filehandlerBasic.readfile("src/resources/singleCharGenerated/trad13060.txt")
