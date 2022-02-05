@@ -1,5 +1,7 @@
 package FilehandlingSingle
 
+import DataObjects.ZhengmaPlain
+
 class FilehandlingSingleBasic {
 
 
@@ -8,6 +10,37 @@ class FilehandlingSingleBasic {
     val text: String = scala.io.Source.fromFile(filePath).mkString
     val lines: List[String] = text.split("\n").toList
     return lines
+  }
+  
+  def produceLongestCodes(zhengmaObjects: List[ZhengmaPlain]): List[ZhengmaPlain] = {
+    val withLongestCodes: List[ZhengmaPlain] = zhengmaObjects.map(e => getObjWithLongestCode(e))
+    return withLongestCodes
+  }
+
+  def getObjWithLongestCode(zhengmaObj: ZhengmaPlain): ZhengmaPlain = {
+    val allCodes: List[String] = zhengmaObj.AllCodes.sortBy(_.length)
+    var longestCodes: List[String] = List()
+    if (allCodes.length < 2) {
+      longestCodes = allCodes
+    }else {
+      val longestLength: Int = allCodes(allCodes.length-1).length
+      longestCodes = allCodes.filter(e => e.length == longestLength)
+    }
+    return zhengmaObj.copy(LongCodes = longestCodes)
+  }
+
+  def buildZhengmaPlain(filePath: String): List[ZhengmaPlain] = {
+    val rawLines: List[String] = readfile(filePath)
+    val objList: List[ZhengmaPlain] = rawLines.map(e=>buildZhengmaPlainFromLine(e)).toList
+    return objList
+  }
+
+  def buildZhengmaPlainFromLine(line: String): ZhengmaPlain = {
+    val allelems: List[String] = line.split("\t").toList
+    val text: String = allelems(0).trim
+    val freq: Int = allelems(1).trim.toInt
+    val lineCodes: List[String] = allelems(2).strip().split(",").sortBy(_.length).toList
+    return ZhengmaPlain(text,freq,lineCodes,List(),List())
   }
 
   def getNonUniqueLongestCodelines(zhengmaLines: List[String]): List[String] = {
